@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import TextEditor from "./TextEditor";
+import ReactTextEditor from "./ReactTextEditor";
+import Spreadsheet from "./Spreadsheet";
+import exampleData from "./exampleData";
+import { useState } from "react";
 function App() {
+  const [read, setRead] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ height: "100vh" }}>
+       
+     <Spreadsheet
+        height="80%"
+        data={exampleData}
+        options={
+          read && {
+            mode: "read",
+            showToolbar: false,
+            showGrid: false,
+            showContextmenu: false,
+          }
+        }
+      />
     </div>
   );
 }
